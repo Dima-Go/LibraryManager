@@ -1,5 +1,6 @@
 import { Category } from './enums'
-import { Book, DamageLogger } from './interfaces'
+import { Book, DamageLogger, Author, Librarian } from './interfaces'
+import { UniversityLibrarian, ReferenceItem } from './classes';
 
 function GetAllBooks(): Book[]
 {
@@ -145,23 +146,35 @@ function BreakLine()
 }
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 
-let myBook: Book = 
-{
-    id: 14,
-    title: 'Everlasting Optimism',
-    author: 'Lenny Ravitz',
-    available: true,
-    category: Category.Psychology,
-    pages: 200,
-    markDamaged: (reason: string) => console.log('Damaged: ' + reason)
-};
 
-PrintBook(myBook);
-myBook.markDamaged('missing back cover');
+//Classes
+let favouriteLibrarian = new UniversityLibrarian();
+favouriteLibrarian.name = 'Sharon';
+favouriteLibrarian.assistCustomer('Stone');
 
-let logDamage: DamageLogger;
-logDamage = (damage: string) => console.log('Damage reported: ' + damage);
-logDamage('Coffee stains');
+let ref: ReferenceItem = new ReferenceItem('1Q84', 1984);
+ref.printItem();
+ref.publisher = 'Sup';
+console.log(ref.publisher);
+
+// Basic Interfaces
+// let myBook: Book = 
+// {
+//     id: 14,
+//     title: 'Everlasting Optimism',
+//     author: 'Lenny Ravitz',
+//     available: true,
+//     category: Category.Psychology,
+//     pages: 200,
+//     markDamaged: (reason: string) => console.log('Damaged: ' + reason)
+// };
+
+// PrintBook(myBook);
+// myBook.markDamaged('missing back cover');
+
+// let logDamage: DamageLogger;
+// logDamage = (damage: string) => console.log('Damage reported: ' + damage);
+// logDamage('Coffee stains');
 
 //Default, Optional, Rest parameters
 // CreateCustomer('Dima', 28, "PT");

@@ -147,20 +147,42 @@ function BreakLine()
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 
 
-//Classes
+//Classes, Inheritance, Abstract, Class Expressions
 let favouriteLibrarian = new UniversityLibrarian();
 favouriteLibrarian.name = 'Sharon';
 favouriteLibrarian.assistCustomer('Stone');
 
 BreakLine();
-let ref: ReferenceItem = new ReferenceItem('1Q84', 1984);
-ref.printItem();
-ref.publisher = 'Sup';
-console.log(ref.publisher);
+let refBook: ReferenceItem = new Encyclopedia('Britanica', 1990, 7);
+refBook.printItem();
+refBook.printCitation();
 
 BreakLine();
-let refBook = new Encyclopedia('Britanica', 1990, 7);
-refBook.printItem();
+let Newspapar = class extends ReferenceItem
+{
+    printCitation(): void
+    {
+        console.log(`Newspaper: ${this.title}`);
+    }
+}
+
+let myPaper = new Newspapar('Gazzetta Dello Sport', 1975);
+myPaper.printCitation();
+
+class Novel extends class { title: string }
+{
+    mainCharacter: string;
+}
+
+
+let myNovel = new Novel();
+myNovel.mainCharacter = 'Me';
+
+// BreakLine();
+// let ref: ReferenceItem = new ReferenceItem('1Q84', 1984);
+// ref.printItem();
+// ref.publisher = 'Sup';
+// console.log(ref.publisher);
 
 // Basic Interfaces
 // let myBook: Book = 

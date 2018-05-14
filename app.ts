@@ -51,14 +51,33 @@ function GetBookByID(id: number) {
     return GetAllBooks().filter(book => book.id == id)[0];
 }
 
+function CreateCustomerID(name: string, id: number) {
+    return name + id;
+}
+
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 
- const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
- console.log('\nUsing LogBookTitle and fictionBooks:');
- LogBookTitle(fictionBooks);
+let x: number;
+let IdGenerator: (chars: string, nums: number) => string;
+let InlineIdGenerator: (chars: string, nums: number) => string;
 
- console.log('\nUsing LogBookTitle and lambda:'); 
- LogBookTitle(GetAllBooks().filter(book => book.category == Category.Fiction).map(book => book.title));
+x = 5;
+IdGenerator = CreateCustomerID;
+InlineIdGenerator = (name: string, id: number) => { return name + id;}
+let myID: string  = CreateCustomerID('Dima', 17);
+let myID2: string  = IdGenerator('Andrei', 47);
+let myID3: string  = InlineIdGenerator('Tim', 21);
+
+console.log(myID);
+console.log(myID2);
+console.log(myID3);
+
+//  const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
+//  console.log('\nUsing LogBookTitle and fictionBooks:');
+//  LogBookTitle(fictionBooks);
+
+//  console.log('\nUsing LogBookTitle and lambda:'); 
+//  LogBookTitle(GetAllBooks().filter(book => book.category == Category.Fiction).map(book => book.title));
  
- console.log('\nUsing fictionBooks and foreach:'); 
- fictionBooks.forEach((val, idx, arr) => console.log(++idx + '-' + val));
+//  console.log('\nUsing fictionBooks and foreach:'); 
+//  fictionBooks.forEach((val, idx, arr) => console.log(++idx + '-' + val));

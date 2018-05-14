@@ -1,6 +1,6 @@
 import { Category } from './enums'
 import { Book, DamageLogger, Author, Librarian } from './interfaces'
-import { UniversityLibrarian, ReferenceItem } from './classes';
+import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes';
 
 function GetAllBooks(): Book[]
 {
@@ -152,10 +152,15 @@ let favouriteLibrarian = new UniversityLibrarian();
 favouriteLibrarian.name = 'Sharon';
 favouriteLibrarian.assistCustomer('Stone');
 
+BreakLine();
 let ref: ReferenceItem = new ReferenceItem('1Q84', 1984);
 ref.printItem();
 ref.publisher = 'Sup';
 console.log(ref.publisher);
+
+BreakLine();
+let refBook = new Encyclopedia('Britanica', 1990, 7);
+refBook.printItem();
 
 // Basic Interfaces
 // let myBook: Book = 

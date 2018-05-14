@@ -9,6 +9,7 @@
     [
         "--target", "ES5",
         "--outDir", "js",
+        "--module", "commonjs",
         "--sourceMap",
         "--watch",
         "app.ts"

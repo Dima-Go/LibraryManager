@@ -1,6 +1,7 @@
-enum Category { Biography, Poetry, Fiction, History, Children }
+import { Category } from './enums'
+import { Book } from './interfaces'
 
-function GetAllBooks()
+function GetAllBooks(): Book[]
 {
     let books =
     [
@@ -15,7 +16,7 @@ function GetAllBooks()
     return books;
 }
 
-function LogFirstAvailable(books: any[] = GetAllBooks()): void
+function LogFirstAvailable(books: Book[] = GetAllBooks()): void
 {
     let numberOfBooks: number = books.length;
     let firstAvailable: string = '';
@@ -57,7 +58,8 @@ function LogBookTitle(titles: string[]): void
     }
 }
 
-function GetBookByID(id: number) {
+function GetBookByID(id: number): Book
+{
     return GetAllBooks().filter(book => book.id == id)[0];
 }
 
@@ -127,6 +129,11 @@ function GetTitles(bookProperty: any): string[]
     return foundTitles;
 }
 
+function PrintBook(book: Book): void
+{
+    console.log(book.title + ', by ' + book.author);
+}
+
 function LogTitle(prefix: string = '\t'): (value: string, index: number, array: string[]) => void
 {
     return title => console.log(prefix + title);
@@ -138,28 +145,42 @@ function BreakLine()
 }
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 
+let myBook: Book = 
+{
+    id: 14,
+    title: 'Everlasting Optimism',
+    author: 'Lenny Ravitz',
+    available: true,
+    category: Category.Psychology,
+    pages: 200,
+    markDamaged: (reason: string) => console.log('Damaged: ' + reason)
+};
+
+PrintBook(myBook);
+myBook.markDamaged('missing back cover');
+
 //Default, Optional, Rest parameters
-CreateCustomer('Dima', 28, "PT");
-CreateCustomer('Gregg');
-CreateCustomer('Arik', 0);
+// CreateCustomer('Dima', 28, "PT");
+// CreateCustomer('Gregg');
+// CreateCustomer('Arik', 0);
 
-BreakLine();
-let fictionBooks = GetBookTitlesByCategory();
-fictionBooks.forEach(LogTitle());
-let biographyBooks = GetBookTitlesByCategory(Category.Biography);
-biographyBooks.forEach(LogTitle());
+// BreakLine();
+// let fictionBooks = GetBookTitlesByCategory();
+// fictionBooks.forEach(LogTitle());
+// let biographyBooks = GetBookTitlesByCategory(Category.Biography);
+// biographyBooks.forEach(LogTitle());
 
-BreakLine();
-LogFirstAvailable();
+// BreakLine();
+// LogFirstAvailable();
 
-BreakLine();
-CheckoutBooks('Dima', 1, 4).forEach(LogTitle());
-CheckoutBooks('Alan', 1, 4, 5).forEach(LogTitle());
-CheckoutBooks('Dave', 2).forEach(LogTitle());
+// BreakLine();
+// CheckoutBooks('Dima', 1, 4).forEach(LogTitle());
+// CheckoutBooks('Alan', 1, 4, 5).forEach(LogTitle());
+// CheckoutBooks('Dave', 2).forEach(LogTitle());
 
-BreakLine();
-GetTitles(false).forEach(LogTitle());
-GetTitles('Jeffrey Archer').forEach(LogTitle());
+// BreakLine();
+// GetTitles(false).forEach(LogTitle());
+// GetTitles('Jeffrey Archer').forEach(LogTitle());
 
 // Lambdas and Function types
 // let x: number;

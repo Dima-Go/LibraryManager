@@ -9,7 +9,12 @@ interface Book
     category: Category;
     pages?: number;
 
-    markDamaged?: (reason: string) => void;
+    markDamaged?: DamageLogger;
 }
 
-export { Book }
+interface DamageLogger
+{
+    (reason:string): void;
+}
+
+export { Book, DamageLogger }

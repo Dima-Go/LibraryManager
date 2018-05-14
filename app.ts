@@ -1,12 +1,12 @@
-enum Category { Biography, Poetry, Fiction, History }
+enum Category { Biography, Poetry, Fiction, History, Children }
 
 function GetAllBooks() {
     let books = [
-        { title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
-        { title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
-        { title: 'A Prisoner of Bitrh', author: 'Jeffrey Archer', available: true, category: Category.Fiction },
-        { title: 'Moby Dick', author: 'Herman Melville', available: false, category: Category.Fiction },
-        { title: 'Steve Jobs', author: 'Walter Isaacson', available: true, category: Category.Biography }        
+        { id: 1, title: 'Ulysses', author: 'James Joyce', available: true, category: Category.Fiction },
+        { id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false, category: Category.Fiction },
+        { id: 3, title: 'A Prisoner of Bitrh', author: 'Jeffrey Archer', available: true, category: Category.Fiction },
+        { id: 4, title: 'Moby Dick', author: 'Herman Melville', available: false, category: Category.Fiction },
+        { id: 5, title: 'Steve Jobs', author: 'Walter Isaacson', available: true, category: Category.Biography }        
     ]
 
     return books;
@@ -46,5 +46,19 @@ function LogBookTitle(titles: string[]): void {
         console.log(title);
     }
 }
- const biographyBooks = GetBookTitlesByCategory(Category.Biography);
- LogBookTitle(biographyBooks);
+
+function GetBookByID(id: number) {
+    return GetAllBooks().filter(book => book.id == id)[0];
+}
+
+/*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
+
+ const fictionBooks = GetBookTitlesByCategory(Category.Fiction);
+ console.log('\nUsing LogBookTitle and fictionBooks:');
+ LogBookTitle(fictionBooks);
+
+ console.log('\nUsing LogBookTitle and lambda:'); 
+ LogBookTitle(GetAllBooks().filter(book => book.category == Category.Fiction).map(book => book.title));
+ 
+ console.log('\nUsing fictionBooks and foreach:'); 
+ fictionBooks.forEach((val, idx, arr) => console.log(++idx + '-' + val));

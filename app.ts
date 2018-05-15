@@ -1,6 +1,7 @@
 import { Category } from './enums'
-import { Book, DamageLogger, Author, Librarian } from './interfaces'
-import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes';
+import { Book, Logger, Author, Librarian } from './interfaces'
+import { UniversityLibrarian, ReferenceItem } from './classes';
+import Encyclopedia from './encyclopedia'
 
 function GetAllBooks(): Book[]
 {

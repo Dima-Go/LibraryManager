@@ -1,12 +1,9 @@
-/// <reference path="./typings/index.d.ts" />
-
-
 import { Category } from './enums'
 import { Book, Logger, Author, Librarian, Magazine } from './interfaces'
 import { UniversityLibrarian, ReferenceItem } from './classes';
 import Encyclopedia from './encyclopedia'
 import Shelf from './shelf';
-import * as _ from 'lodash';
+import * as _ from "lodash";
 
 function GetAllBooks(): Book[]
 {

@@ -1,8 +1,12 @@
+/// <reference path="./typings/index.d.ts" />
+
+
 import { Category } from './enums'
 import { Book, Logger, Author, Librarian, Magazine } from './interfaces'
 import { UniversityLibrarian, ReferenceItem } from './classes';
 import Encyclopedia from './encyclopedia'
-import Shelf from './shelf'
+import Shelf from './shelf';
+import * as _ from 'lodash';
 
 function GetAllBooks(): Book[]
 {
@@ -160,6 +164,9 @@ bookShelf.displayShelf();
 let foundBook = bookShelf.find('Steve Jobs');
 BreakLine();
 PrintBook(foundBook);
+
+BreakLine();
+console.log(_.snakeCase("This Is A Sanke Case Sentence"));
 
 //Classes, Inheritance, Abstract, Class Expressions
 // let favouriteLibrarian = new UniversityLibrarian();

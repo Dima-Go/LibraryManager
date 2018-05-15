@@ -1,7 +1,8 @@
 import { Category } from './enums'
-import { Book, Logger, Author, Librarian } from './interfaces'
+import { Book, Logger, Author, Librarian, Magazine } from './interfaces'
 import { UniversityLibrarian, ReferenceItem } from './classes';
 import Encyclopedia from './encyclopedia'
+import Shelf from './shelf'
 
 function GetAllBooks(): Book[]
 {
@@ -147,37 +148,49 @@ function BreakLine()
 }
 /*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
 
+let inventory: Array<Book> = GetAllBooks();
+let bookShelf: Shelf<Book> = new Shelf<Book>();
+
+inventory.forEach(book => bookShelf.add(book));
+let firstBook: Book = bookShelf.getFirst();
+PrintBook(firstBook);
+
+BreakLine();
+bookShelf.displayShelf();
+let foundBook = bookShelf.find('Steve Jobs');
+BreakLine();
+PrintBook(foundBook);
 
 //Classes, Inheritance, Abstract, Class Expressions
-let favouriteLibrarian = new UniversityLibrarian();
-favouriteLibrarian.name = 'Sharon';
-favouriteLibrarian.assistCustomer('Stone');
+// let favouriteLibrarian = new UniversityLibrarian();
+// favouriteLibrarian.name = 'Sharon';
+// favouriteLibrarian.assistCustomer('Stone');
 
-BreakLine();
-let refBook: ReferenceItem = new Encyclopedia('Britanica', 1990, 7);
-refBook.printItem();
-refBook.printCitation();
+// BreakLine();
+// let refBook: ReferenceItem = new Encyclopedia('Britanica', 1990, 7);
+// refBook.printItem();
+// refBook.printCitation();
 
-BreakLine();
-let Newspapar = class extends ReferenceItem
-{
-    printCitation(): void
-    {
-        console.log(`Newspaper: ${this.title}`);
-    }
-}
+// BreakLine();
+// let Newspapar = class extends ReferenceItem
+// {
+//     printCitation(): void
+//     {
+//         console.log(`Newspaper: ${this.title}`);
+//     }
+// }
 
-let myPaper = new Newspapar('Gazzetta Dello Sport', 1975);
-myPaper.printCitation();
+// let myPaper = new Newspapar('Gazzetta Dello Sport', 1975);
+// myPaper.printCitation();
 
-class Novel extends class { title: string }
-{
-    mainCharacter: string;
-}
+// class Novel extends class { title: string }
+// {
+//     mainCharacter: string;
+// }
 
 
-let myNovel = new Novel();
-myNovel.mainCharacter = 'Me';
+// let myNovel = new Novel();
+// myNovel.mainCharacter = 'Me';
 
 // BreakLine();
 // let ref: ReferenceItem = new ReferenceItem('1Q84', 1984);
